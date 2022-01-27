@@ -1,5 +1,7 @@
 package Programmers;
 
+import java.util.Comparator;
+
 public class Solution_Kakao_2018_Lev1 {
     class Solution {
         public int solution(String dartResult) {
@@ -22,7 +24,6 @@ public class Solution_Kakao_2018_Lev1 {
             }
             scores[count]=temp;
             count=0;
-
             for(String score : scores){
                 int tempnum=0;
                 tempnum+=Character.getNumericValue(score.charAt(0));
