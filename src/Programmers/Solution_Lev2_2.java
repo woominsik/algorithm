@@ -1,7 +1,7 @@
 package Programmers;
-
+import java.util.*;
 public class Solution_Lev2_2 {
-    import java.util.*;
+
     class Solution {
         public String solution(String s) {
             String answer = "";
