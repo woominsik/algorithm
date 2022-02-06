@@ -1,6 +1,6 @@
 package Programmers;
 
-public class Solutution_Lev2_1 {
+public class Solution_Lev2_1 {
     class Solution {
         public int solution(int n) {
             int answer = 0;
