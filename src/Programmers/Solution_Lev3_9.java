@@ -1,5 +1,9 @@
 package Programmers;
-
+// enroll의 이름과 부모의 이름을 묶은 Map과 enroll의 이름과 index을 묶은 Map을 둔다.
+// 그리고 seller로 for문을 돌려 셀러의 profit과 부모에게 줄돈 을 바로 계산한뒤 answer에 저장하고
+// 셀러의 부모를 찾는 while문을 돌려 부모를 찾는다.
+// 찾은 부모의 profit을 앞서 계산 해놓은 값으로 더해준다.
+// 그리고 for문을 계속해서 돌려 seller에 값을 저장하고 수수료를 부모에게 저장하는 식으로 진행한다.
 
 import java.util.*;
 
