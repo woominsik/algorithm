@@ -1,7 +1,7 @@
 package Programmers;
 
 /**
- * 못풀었음
+ * 못풀었음 공 이동 시뮬레이션
  * row-start값과 row-end값, col-start값과 col-end값을 선언한 후 queries에서 역순으로 시작하여 x,y값에 도달할 수 있는
  * n,m의 후보를 찾는 식으로 진행한다.
  * 원래 좌로 움직이어야 할것은 우로 바꾸고 rs값이 0보다 크면 step값을 더해주게 되고 re값에는 m-1과 re+step값중 최소값을 준다.
