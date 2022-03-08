@@ -40,7 +40,6 @@ public class Solution_Lev3_9 {
                     }
                 }
             }
-
             return answer;
         }
     }
