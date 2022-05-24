@@ -1,4 +1,11 @@
 package Programmers;
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/17682
+ * 총 3번의 기회가 주어지므로 scores와 num을 3의 크기를 가지는 배열로 만든다.
+ * 다음으로 dartResult의 각 char를 각각 for문을 통해 돌려 숫자가 나올 경우 다음 배열로 저장하는 식으로 for문을 진행하여
+ * 각각의 temp를 scores에 집어넣는다.
+ * 다음으로 scores에서 foreach문을 통해 score를 계산해주고 각 자리에 맞춰 num배열에 저장해준다.
+ */
 
 import java.util.Comparator;
 

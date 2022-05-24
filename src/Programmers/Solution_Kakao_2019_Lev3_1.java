@@ -1,5 +1,6 @@
 package Programmers;
 
+// https://programmers.co.kr/learn/courses/30/lessons/64064
 // 처음에는 일일이 비교해가면서 banned_id에 들어갈 것들을 구해 조합하는 식으로 풀으려 했으나 조합하는 부분에 막혔다.
 // 그래서 각 banned_id마다 맞는 user_id를 찾아 dfs하는 식으로 조합을 진행하여 문제를 풀었다.
 

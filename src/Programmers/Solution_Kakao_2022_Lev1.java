@@ -1,4 +1,12 @@
 package Programmers;
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/92334
+ * 신고된 횟수를 저장하는 hm과 내가 신고한 사람을 저장하는 reported와 ban당한 사람의 Arraylist인 banned를 만들어 준다
+ * 다음으로 report를 foreach문을 돌려준다. 각각의 String들을 " "을 통해 분리하여 신고된 사람과 신고한 사람을 나누어 저장한다.
+ * 만약 같은 사람이 같은 사람을 여러번 신고해도 1번만으로 취급하여 진행한다.
+ * 그 후 신고된 횟수가 k보다 큰 경우를 확인하여 banned에 넣어준다.
+ * 그 후 find 함수를 통해 내가 신고한 사람중 몇명이 정지당했는지 보여줬는 지를 값을 저장하여 반환한다.
+ */
 
 import java.util.ArrayList;
 import java.util.HashMap;

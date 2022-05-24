@@ -1,4 +1,14 @@
 package Programmers;
+
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/42889
+ * 먼저 각 스테이지 번호와 실패율을 저장하는 클래스인 stage를 만들고 스테이지 실패한 사람 수를 저장하는 fail과
+ * 도전하는 사람의 수를 저장하는 count를 만들어 놓는다.
+ * stage함수에서 각 숫자들에서 1을 뺀값을 인덱스로 가지는 fail에 1을 각각 더해준다.
+ * 그리고 count[0]에는 stage의 길이에 저장하고 1부터는 count[i-1]-fail[i-1]을 넣어준다.
+ * 그리도 for문을 통해 stage를 만들어주고 al에 저장한다. 다음으로 fail로 내림 차순으로 정렬하여 스테이지의num을 return해준다.
+ */
+
 import java.util.*;
 public class Solution_Kakao_2019_Lev1_1 {
     class Solution {
