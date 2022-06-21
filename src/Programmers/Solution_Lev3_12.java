@@ -2,6 +2,7 @@ package Programmers;
 import java.util.*;
 
 /**
+ * https://programmers.co.kr/learn/courses/30/lessons/42628
  * 오름차순으로 정렬되는 우선순위 큐 pq와 내림차순으로 정렬되는 우선순위 큐 pqr을 선언한 후
  * 모든 수를 모두 집어 넣어준다. 그리고 명령을 입력받은 후 i일 경우 두 우선순위 큐에 모두 값을 넣어주고
  * D 1일경우 pqr에서 poll을 해주고 D -1일 경우 pq에서 값을 poll읗 해준 후 pqr과 pq를 retainAll을 하여 진행한다.

@@ -2,6 +2,7 @@ package Programmers;
 import java.util.*;
 
 /**
+ * https://programmers.co.kr/learn/courses/30/lessons/42579
  * genre이름과 각 노래들을 저장해놓은 genreSong과 genre와 총 plays횟수를 저장한 genrePlays를 선언한 후
  * for문을 통해 모두 저장을 한 후 glist를 만들어 총 plays횟수를 내림차순으로 정렬시켜준다.
  * 정렬된 glist를 통해 for문을 돌려 song Arraylist를 가져와 내림차순으로 정렬시켜주고 상위 2개를 뺴주어 값을 구한다.

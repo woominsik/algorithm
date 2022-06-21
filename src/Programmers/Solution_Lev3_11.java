@@ -1,6 +1,7 @@
 package Programmers;
 
 /**
+ * https://programmers.co.kr/learn/courses/30/lessons/87391
  * 못풀었음 공 이동 시뮬레이션
  * row-start값과 row-end값, col-start값과 col-end값을 선언한 후 queries에서 역순으로 시작하여 x,y값에 도달할 수 있는
  * n,m의 후보를 찾는 식으로 진행한다.
