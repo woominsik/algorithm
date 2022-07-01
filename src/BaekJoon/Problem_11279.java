@@ -22,6 +22,7 @@ public class Problem_11279 {
                     System.out.println(pq.poll());
                 }
             }
+
             else{
                 pq.add(x);
             }
