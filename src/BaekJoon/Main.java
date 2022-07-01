@@ -10,43 +10,26 @@ import java.util.*;
 
 
 class Main{
-    static TreeMap<Integer, ArrayList<Integer>> absNum;
+    static PriorityQueue<Integer> pq;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        absNum = new TreeMap<>();
+        pq = new PriorityQueue<>(Collections.reverseOrder());
         for(int i=0;i<N;i++){
-            int x=Integer.parseInt(br.readLine());
+            int x = Integer.parseInt(br.readLine());
             if(x==0){
-                if(absNum.isEmpty()){
+                if(pq.isEmpty()){
                     System.out.println(0);
-                    continue;
                 }
-                ArrayList<Integer> temp = absNum.firstEntry().getValue();
-                int key = absNum.firstEntry().getKey();
-                if(temp.isEmpty()){
-                    System.out.println(0);
-                    continue;
-                }
-                int minNum = Collections.min(temp);
-                System.out.println(minNum);
-                temp.remove(Integer.valueOf(minNum));
-                if(temp.isEmpty()){
-                    absNum.remove(Integer.valueOf(key));
+                else{
+                    System.out.println(pq.poll());
                 }
             }
             else{
-                int abs = Math.abs(x);
-                if(absNum.containsKey(abs)){
-                    absNum.get(abs).add(x);
-                }
-                else{
-                    ArrayList<Integer> temp= new ArrayList<>();
-                    temp.add(x);
-                    absNum.put(abs,temp);
-                }
+                pq.add(x);
             }
         }
+
     }
 }
 
