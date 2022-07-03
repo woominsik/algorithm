@@ -10,26 +10,25 @@ import java.util.*;
 
 
 class Main{
-    static PriorityQueue<Integer> pq;
+    static TreeSet<Integer> ts;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        pq = new PriorityQueue<>(Collections.reverseOrder());
+        StringTokenizer st;
+        ts = new TreeSet<>();
         for(int i=0;i<N;i++){
-            int x = Integer.parseInt(br.readLine());
-            if(x==0){
-                if(pq.isEmpty()){
-                    System.out.println(0);
+            st = new StringTokenizer(br.readLine());
+            for(int j=0; j<N; j++) {
+                int temp = Integer.parseInt(st.nextToken());
+                if(ts.isEmpty()||temp>ts.first()){
+                    ts.add(temp);
                 }
-                else{
-                    System.out.println(pq.poll());
+                if(ts.size()>N){
+                    ts.remove(Integer.valueOf(ts.first()));
                 }
-            }
-            else{
-                pq.add(x);
             }
         }
-
+        System.out.println(ts.first());
     }
 }
 
