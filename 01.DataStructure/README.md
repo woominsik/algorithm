@@ -1,4 +1,4 @@
-<h1>Data Structre (자료구조)</h1>
+# Data Structre (자료구조)</h1>
 <h2>1.큐</h2>
 
 
@@ -11,4 +11,4 @@
 
 <h2>5.셋(Set)</h2>
 
-<h2>6.우선순위 큐(Priority Queue)</h2>
+## 6.우선순위 큐(Priority Queue)
