@@ -56,7 +56,8 @@ public class Problem_21939 {
                 int nowlevel = sc.nextInt();
                 ts.add(new Problem(nowidx, nowlevel));
                 map.put(nowidx,nowlevel);
-            } else {
+            }
+            else {
                 if (command.equals("recommend")) {
                     if (sc.nextInt() == 1) {
                         System.out.println(ts.last().idx);
