@@ -11,43 +11,54 @@ import java.util.*;
 
 
 
-class Main{
-    static int [] parents;
-    static boolean [] visited;
-    static ArrayList<Integer> [] alArr;
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N=Integer.parseInt(br.readLine());
-        parents = new int [N+1];
-        visited=new boolean[N+1];
-        alArr = new ArrayList[N+1];
-        for(int i=1;i<=N;i++){
-            alArr[i]=new ArrayList<>();
-        }
-        parents[1] =-1; //1번 노드는 루트
+//class Main{
+//    static Map<Integer, Integer>map; //num이랑 총 자식 수
+//    static ArrayList<Integer>[] alArr; // 자식을 담은 배열
+//    public static void main(String[] args)throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        int N = Integer.parseInt(br.readLine());
+//        map = new HashMap<>();
+//        alArr = new ArrayList[N];
+//        for(int i=0;i<N;i++){
+//            alArr[i]=new ArrayList<>();
+//        }
+//        String [] temp = br.readLine().split(" ");
+//        int[] arr = new int[temp.length];
+//        int cnt=0;
+//        for(String s:temp){
+//            arr[cnt]=Integer.parseInt(s);
+//            cnt++;
+//        }
+//        int deleted = Integer.parseInt(br.readLine());
+//        cnt=0;
+//        for(int i:arr){
+//            if(i!=-1){
+//                alArr[i].add(cnt);
+//            }
+//            cnt++;
+//        }
+//
+//        for(int i=N-1;i>=0;i--){
+//            if(arr[i]!=-1)
+//                alArr[arr[i]].addAll(alArr[i]);
+//        }
+//        for(int i=0;i<N;i++){
+//            if(alArr[deleted].contains(i)||i==deleted){
+//               map.put(i,-1);
+//            }
+//            else{
+//                map.put(i,alArr[i].size());
+//            }
+//        }
+//        int answer=0;
+//        for(int i=0;i<N;i++){
+//            if(map.get(i)==0){
+//                answer++;
+//            }
+//
+//        }
+//        System.out.println(answer);
+//    }
+//}
 
-        for(int i=0;i<N-1;i++){
-            String [] temp = br.readLine().split(" ");
-            int [] arr = new int[2];
-            arr[0]=Integer.parseInt(temp[0]);
-            arr[1] = Integer.parseInt(temp[1]);
-            alArr[arr[0]].add(arr[1]);
-            alArr[arr[1]].add(arr[0]);
-        }
-        dfs(1);
-        for(int i=2;i<=N;i++){
-            System.out.println(parents[i]);
-        }
-    }
-    static void dfs(int now){
-        ArrayList<Integer> temp = alArr[now];
-        visited[now]=true;
-        for(int n : temp){
-            if(!visited[n]){
-                parents[n]=now;
-                dfs(n);
-            }
-        }
-    }
-}
 
