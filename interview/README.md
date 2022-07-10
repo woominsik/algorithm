@@ -3,4 +3,4 @@
 
 
 ### 디자인 패턴
-<a href="../OODP_Study"><h3>디자인 패턴 정리</h3></a>
+<a href="https://github.com/woominsik/OODP_Study"><h3>디자인 패턴 정리</h3></a>
