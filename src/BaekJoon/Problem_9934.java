@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Problem_9934 {
     static int max;
-    static Map<Integer, ArrayList<Integer>> map;
+    static Map<Integer, ArrayList<Integer>> map; // 깊이 별 노드들
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());

@@ -7,123 +7,144 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-
-
-
-
 class Main{
+    static ArrayList<int []> timeList;
     public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input;
-        Tree tree = new Tree();
-        while (true) {
-            input = br.readLine();
-            if (input == null || input.equals(""))
-                break;
-            tree.inputNode(Integer.parseInt(input));
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        timeList = new ArrayList<>();
+        for(int i=0;i<N;i++){
+            int [] arr = Arrays.stream(br.readLine().split(" "))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+            timeList.add(arr);
         }
-//        tree.preOrder(tree.root);
-//        System.out.println();
-        tree.postOrder(tree.root);
-    }
-    static class Node{
-        int num;
-        Node left;
-        Node right;
-    }
-    static class Tree{
-        Node root;
-        void inputNode(int n){
-            if(root ==null){
-                root = new Node();
-                root.num = n;
+        Collections.sort(timeList, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if(o1[1]==o2[1])
+                    return o1[0]-o2[0];
+                else
+                    return o1[1]-o2[1];
             }
-            else{
-                findNode(n, this.root);
+        });
+        int end=0;
+        int cnt =0;
+        for(int i=0;i< timeList.size();i++){
+            if(timeList.get(i)[0]>=end){
+                cnt++;
+                end = timeList.get(i)[1];
             }
         }
-        void findNode(int n,Node node){
-            if(n<node.num){
-                if(node.left==null){
-                    node.left = new Node();
-                    node.left.num=n;
-                    return;
-                }
-                else{
-                    findNode(n, node.left);
-                }
-            }
-            else{
-                if(node.right==null){
-                    node.right = new Node();
-                    node.right.num=n;
-                    return;
-                }
-                else{
-                    findNode(n, node.right);
-                }
-            }
-        }
-        void preOrder(Node node){
-            if(node!=null){
-                System.out.println(node.num);
-                preOrder(node.left);
-                preOrder(node.right);
-            }
-        }
-        void postOrder(Node node){
-            if(node!=null){
-                postOrder(node.left);
-                postOrder(node.right);
-                System.out.println(node.num);
-            }
-        }
+
+        System.out.println(cnt);
+
     }
 }
 
 
-//code.oa.gg/java8/940
-// 문제 : 아래 코드의 잘 못된 점을 고쳐보세요.
+//class Main {
+//    public static void main(String[] args) {
+//        저장소.저장(10);
+//        저장소.저장("안녕");
+//        저장소.저장(new 사람());
+//        저장소.저장(new 사과());
+//        저장소.저장(5.5);
+//        저장소.저장(false);
+//        저장소.저장('a');
+//
+//        // 정수 계열
+//        byte b = 0; // 1바이트
+//        char c = 1; // 2바이트
+//        short s = 2; // 2바이트
+//        int i = 3; // 4바이트
+//        long l = 4; // 8바이트
+//
+//        // 실수 계열
+//        // 4.1f => float 형 실수를 의미
+//        float f = 3.14f; // 4바이트
+//        // 3.141592 => double 형 실수를 의미
+//        double d = 3.141592; // 8 바이트
+//
+//        // 논리 계열
+//        boolean bl = false; // 1/8 바이트, 1비트
+//
+//        저장소.저장(b);
+//        저장소.저장(s);
+//        저장소.저장(c);
+//        저장소.저장(i);
+//        저장소.저장(l);
+//        저장소.저장(f);
+//        저장소.저장(d);
+//        저장소.저장(bl);
+//    }
+//
+//}
+//class 저장소{
+////    static void 저장(int t){ //모두 double로 받을 수 있다.
+////
+////    }
+////    static void 저장(byte t){
+////
+////    }
+////    static void 저장(char t){
+////
+////    }
+////    static void 저장(short t){
+////
+////    }
+////    static void 저장(long t){
+////
+////    }
+////    static void 저장(float t){
+////
+////    }
+//    static void 저장(double t){
+//
+//    }
+//    static void 저장(boolean t){
+//
+//    }
+////    static void 저장(String t){ //Object를 통해 String과 사람을 받을 수 있다.
+////
+////    }
+////    static void 저장(사과 t){ //상속을 통해 사람으로 받을 수 있다.
+////
+////    }
+//    static void 저장(Object t){
+//
+//    }
+//}
+//
+//class 사람{
+//
+//}
+//class 사과 extends 사람{
+//
+//}
 
 //class Main {
 //    public static void main(String[] args) {
-//        자동차 자동차 = new 자동차();
-//        자동차.달리다();
+//        int i = 10;
+//        저장소 a = new 저장소();
+//
+//        // 구현 시작
+//        a.저장(i);
+////        a.저장(new Integer(i)); // 오토 언박싱 사용 X
+//        i = (int) a.주세요();
+//        // 구현 끝
+//
+//        System.out.println(i);
+//        // 출력 : 10
 //    }
 //}
+//class 저장소 {
+//    Object data;
 //
-//class 자동차 {
-//    void 달리다() {
-//        System.out.println("자동차가 달립니다.");
+//    void 저장(Object o) {
+//        data = o;
 //    }
-//}
-
-//class Main {
-//    public static void main(String[] args) {
-//        사람 a사람1 = new 사람();
-//        a사람1.이름 = "홍길동";
-//        a사람1.나이 = 22;
-//
-//        a사람1.자기소개();
-//        // 출력 : 저는 22살 홍길동 입니다.
-//
-//        사람 a사람2 = new 사람();
-//        a사람2.이름 = "홍길순";
-//        a사람2.나이 = 25;
-//
-//        a사람2.자기소개();
-//        // 출력 : 저는 25살 홍길순 입니다.
-//
-//        a사람1.자기소개();
-//        // 출력 : 저는 22살 홍길동 입니다.
-//    }
-//}
-//
-//class 사람 {
-//    int 나이;
-//    String 이름;
-//
-//    void 자기소개() {
-//        System.out.println("저는 " + 나이 + "살 " + 이름 + " 입니다.");
+//    Object 주세요() {
+//        return data;
 //    }
 //}

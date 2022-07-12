@@ -40,9 +40,7 @@ public class Problem_1068 {
                 dfs(i);
             }
         }
-//        for(HashSet<Integer>s : alSet){
-//            System.out.println(s);
-//        }
+
         int deleted = Integer.parseInt(br.readLine());
         int answer=0;
         for(int i=0;i<N;i++){
