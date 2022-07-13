@@ -6,145 +6,91 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Main{
-    static ArrayList<int []> timeList;
     public static void main(String[] args) throws IOException{
-        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        timeList = new ArrayList<>();
-        for(int i=0;i<N;i++){
-            int [] arr = Arrays.stream(br.readLine().split(" "))
-                    .mapToInt(Integer::parseInt)
-                    .toArray();
-            timeList.add(arr);
-        }
-        Collections.sort(timeList, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if(o1[1]==o2[1])
-                    return o1[0]-o2[0];
-                else
-                    return o1[1]-o2[1];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        long[] arr = Arrays.stream(br.readLine().split(" "))
+                .mapToLong(Long::parseLong)
+                .toArray();
+        List<Long> al = new ArrayList<>();
+        al.add(arr[0]);
+        boolean check=false;
+        Long cnt=1L;
+        while(true){
+            cnt++;
+            al=compute(al);
+            if(al.contains(arr[1])){
+                break;
             }
-        });
-        int end=0;
-        int cnt =0;
-        for(int i=0;i< timeList.size();i++){
-            if(timeList.get(i)[0]>=end){
-                cnt++;
-                end = timeList.get(i)[1];
+            al = al.stream()
+                    .filter(t->t<arr[1])
+                    .collect(Collectors.toList());
+//            System.out.prLongln(al);
+            if(al.size()==0){
+                check=true;
+                break;
             }
         }
-
-        System.out.println(cnt);
-
+        if(check)
+            System.out.println(-1);
+        else
+            System.out.println(cnt);
+    }
+    static ArrayList<Long> compute(List<Long>al){
+        ArrayList<Long> temp = new ArrayList<>();
+        for(Long i : al){
+            temp.add(i*2);
+            temp.add(i*10+1);
+        }
+        return temp;
     }
 }
 
-
-//class Main {
+//class Main{
 //    public static void main(String[] args) {
-//        저장소.저장(10);
-//        저장소.저장("안녕");
-//        저장소.저장(new 사람());
-//        저장소.저장(new 사과());
-//        저장소.저장(5.5);
-//        저장소.저장(false);
-//        저장소.저장('a');
+//        학생 a학생1 = new 학생(1, 23, "홍길동");
+//        학생 a학생2 = new 학생(1, 23, "홍길동");
 //
-//        // 정수 계열
-//        byte b = 0; // 1바이트
-//        char c = 1; // 2바이트
-//        short s = 2; // 2바이트
-//        int i = 3; // 4바이트
-//        long l = 4; // 8바이트
-//
-//        // 실수 계열
-//        // 4.1f => float 형 실수를 의미
-//        float f = 3.14f; // 4바이트
-//        // 3.141592 => double 형 실수를 의미
-//        double d = 3.141592; // 8 바이트
-//
-//        // 논리 계열
-//        boolean bl = false; // 1/8 바이트, 1비트
-//
-//        저장소.저장(b);
-//        저장소.저장(s);
-//        저장소.저장(c);
-//        저장소.저장(i);
-//        저장소.저장(l);
-//        저장소.저장(f);
-//        저장소.저장(d);
-//        저장소.저장(bl);
-//    }
-//
-//}
-//class 저장소{
-////    static void 저장(int t){ //모두 double로 받을 수 있다.
-////
-////    }
-////    static void 저장(byte t){
-////
-////    }
-////    static void 저장(char t){
-////
-////    }
-////    static void 저장(short t){
-////
-////    }
-////    static void 저장(long t){
-////
-////    }
-////    static void 저장(float t){
-////
-////    }
-//    static void 저장(double t){
-//
-//    }
-//    static void 저장(boolean t){
-//
-//    }
-////    static void 저장(String t){ //Object를 통해 String과 사람을 받을 수 있다.
-////
-////    }
-////    static void 저장(사과 t){ //상속을 통해 사람으로 받을 수 있다.
-////
-////    }
-//    static void 저장(Object t){
-//
+//        System.out.println(a학생1.equals(a학생2)); // true
 //    }
 //}
+//class 학생{
+//    int id;
+//    int 나이;
+//    String 이름;
 //
-//class 사람{
+//    public 학생(int id, int 나이, String 이름) {
+//        this.id = id;
+//        this.나이 = 나이;
+//        this.이름 = 이름;
+//    }
 //
-//}
-//class 사과 extends 사람{
-//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        학생 학생 = (학생) o;
+//        return id == 학생.id && 나이 == 학생.나이 && 이름.equals(학생.이름);
+//    }
 //}
 
 //class Main {
 //    public static void main(String[] args) {
-//        int i = 10;
-//        저장소 a = new 저장소();
-//
-//        // 구현 시작
-//        a.저장(i);
-////        a.저장(new Integer(i)); // 오토 언박싱 사용 X
-//        i = (int) a.주세요();
-//        // 구현 끝
-//
-//        System.out.println(i);
-//        // 출력 : 10
+//        생물 a생물 = new 사람();
+//        System.out.println(a생물 instanceof Object);
+//        System.out.println(a생물 instanceof 생물);
+//        System.out.println(a생물 instanceof 동물);
+//        System.out.println(a생물 instanceof 사람);
+//        System.out.println(a생물 instanceof 원숭이);
 //    }
 //}
-//class 저장소 {
-//    Object data;
-//
-//    void 저장(Object o) {
-//        data = o;
-//    }
-//    Object 주세요() {
-//        return data;
-//    }
+//class 생물 extends Object {
+//}
+//class 동물 extends 생물 {
+//}
+//class 사람 extends 동물 {
+//}
+//class 원숭이 extends 동물 {
 //}
