@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Problem_11000 {
+public class  Problem_11000 {
 
     static int N;
     static int[][] room;

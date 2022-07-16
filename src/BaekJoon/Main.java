@@ -13,64 +13,72 @@ import java.io.*;
 import java.util.Arrays;
 
 
-public class Main {
+//public class Main {
+//    public static void main(String[] args) throws IOException{
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        int N = Integer.parseInt(br.readLine());
+//        ArrayList<int []> cities = new ArrayList<>();
+//        for(int i=0;i<N;i++){
+//            int [] temp = Arrays.stream(br.readLine().split(" "))
+//                    .mapToInt(Integer::parseInt)
+//                    .toArray();
+//            cities.add(temp);
+//        }
+//        int answer =0;
+//        long dist=0;
+//
+//        Collections.sort(cities, new Comparator<int[]>() {
+//            @Override
+//            public int compare(int[] o1, int[] o2) {
+//                if(o1[1]!=o2[1]){
+//                    return o2[1]-o1[1];
+//                }
+//                else{
+//                    return o1[0]-o2[0];
+//                }
+//            }
+//        });
+//        for(int [] t : cities){
+//            System.out.println(t[0]+" "+t[1]);
+//        }
+//
+//    }
+//}
+
+
+class Main{
+    static int N;
+    static int[][] room;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
 
-        int size = s.length();
-        System.out.println(findMax(s, size, 0));
-        System.out.println(findMin(s, size, 0));
+        N=Integer.parseInt(br.readLine());
+        room= new int[N][2];
 
-    }
-
-    private static String findMin(String str, int size, int k) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            if (str.charAt(i) == 'M') {
-                k = i;
-                while (k < str.length() && str.charAt(k) == 'M') {
-                    k++;
-                }
-                sb.append(1);
-                for(;i+1<k; i++){
-                    sb.append(0);
-                }
-                i = k - 1;
-            } else {
-                sb.append(5);
-            }
+        StringTokenizer st;
+        for(int i=0;i<N;i++){
+            st= new StringTokenizer(br.readLine());
+            room[i][0]=Integer.parseInt(st.nextToken());
+            room[i][1]=Integer.parseInt(st.nextToken());
         }
-        return sb.toString();
-    }
 
-    private static String findMax(String str, int size, int k) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            if (str.charAt(i) == 'M') {
-                k = i;
-                while(k<size && str.charAt(k)=='M'){
-                    k++;
-                }
-                if(k==size){
-                    for(;i<k; i++){
-                        sb.append(1);
-                    }
-                }
-                else{
-                    sb.append(5);
-                    for(;i<k; i++){
-                        sb.append(0);
-                    }
-                }
-                i=k;
-
-            } else {
-                sb.append(5);
+        Arrays.sort(room, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return Integer.compare(o1[0],o2[0]);
             }
+        });
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.offer(room[0][1]);
+        for(int i=1;i<N;i++){
+            if(pq.peek()<=room[i][0]){
+                pq.poll();
+            }
+            pq.offer(room[i][1]);
         }
-        return sb.toString();
+        System.out.println(pq.size());
     }
 }
 
