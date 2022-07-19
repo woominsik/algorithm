@@ -1,5 +1,11 @@
 package BaekJoon;
 
+
+/**
+ * 규칙 : 최소값은 M은 K가 나올때까지 연결한 후 10의 제곱 형태로 K는 나올때마다 바로바로
+ *       최대값은 K가 나올때마다 끊기.
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

@@ -24,10 +24,10 @@ public class Problem_16953 {
             if(al.contains(arr[1])){
                 break;
             }
-            al = al.stream()
+            al = al.stream()   // arr[1]보다 작은 값들 모두 제거
                     .filter(t->t<arr[1])
                     .collect(Collectors.toList());
-//            System.out.prLongln(al);
+
             if(al.size()==0){
                 check=true;
                 break;
@@ -38,7 +38,7 @@ public class Problem_16953 {
         else
             System.out.println(cnt);
     }
-    static ArrayList<Long> compute(List<Long>al){
+    static ArrayList<Long> compute(List<Long>al){ // 연산
         ArrayList<Long> temp = new ArrayList<>();
         for(Long i : al){
             temp.add(i*2);

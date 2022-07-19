@@ -42,45 +42,4 @@ public class  Problem_11000 {
         }
         System.out.println(pq.size());
     }
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        int N= sc.nextInt();
-//        ArrayList<Integer> al =new ArrayList<>();
-//        int []prefix=new int[1000000000+1];
-//        int max=Integer.MIN_VALUE;
-//        for(int i=0;i<N;i++){
-//            int s=sc.nextInt();
-//            int t=sc.nextInt();
-//            if(max>0&&s>max){
-//                int a = s-max;
-//                s-=a;
-//                t-=a;
-//            }
-//            if(t>max){
-//                max=t;
-//            }
-////            System.out.println(s+" "+t+" "+max);
-//            prefix[s-1]+=1;
-//            prefix[t-1]-=1;
-//        }
-//        for(int i=1;i<max+1;i++){
-//
-//            if(prefix[i-1]!=0){
-//                prefix[i]+=prefix[i-1];
-//            }
-////            System.out.println(i+" "+prefix[i-1]+" "+prefix[i]);
-//        }
-////        System.out.println("max : "+max);
-//        int answer=Integer.MIN_VALUE;
-//        for(int i=0;i<max+1;i++){
-//            if(answer<prefix[i]){
-//                answer=prefix[i];
-//            }
-//        }
-//
-////        for(int i=0;i<max+1;i++){
-////            System.out.print(prefix[i]+" ");
-////        }
-//        System.out.println(answer);
-//    }
 }
