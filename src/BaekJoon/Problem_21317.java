@@ -28,15 +28,15 @@ public class Problem_21317 {
 
         dp[1] = dp[0]+arr[0][0];
 
-        for(int i=2;i<N;i++){
-            dp[i] = Math.min(dp[i-1]+arr[i-1][0],dp[i-2]+arr[i-2][1]);
+        for(int i=2;i<N;i++){ // 작은 점프와 큰 점프만을 사용하여 dp 값 구함
+            dp[i] = Math.min(dp[i-1] + arr[i-1][0],dp[i-2]+arr[i-2][1]);
         }
 
-        for(int i=N-1;i>=3;i--){
+        for(int i=N-1;i>=3;i--){ // 매우 큰 점프를 단 한번 사용하기 위해 for문을 거꾸로 돌려 구현
             dp[i] = Math.min(dp[i], dp[i-3]+K);
         }
 
-        for(int i=3;i<N;i++){
+        for(int i=3;i<N;i++){ // 중간에 매우 큰 점프를 사용할 수 있으므로 다시한번 1의 과정 진행
             dp[i] = Math.min(dp[i],Math.min(dp[i-1]+arr[i-1][0],dp[i-2]+arr[i-2][1]));
         }
 
