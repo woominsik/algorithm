@@ -1,16 +1,15 @@
 package BaekJoon;
 
-
+//https://coder-in-war.tistory.com/entry/%EA%B0%9C%EB%85%90-49-LCSLongest-Common-Subsequence 참고
+// lcs 알고리즘
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
+public class Problem_9251 {
 
-public class Main{
-
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s1 = new StringBuilder(br.readLine()).insert(0,"0").toString();
         String s2 = new StringBuilder(br.readLine()).insert(0,"0").toString();
@@ -18,7 +17,6 @@ public class Main{
         int [][]dp = new int[s1.length()][s2.length()];
 
         for(int i=1;i<s1.length();i++){ //
-            boolean check = false;
             for(int j=1;j<s2.length();j++){
                 if(s1.charAt(i)==s2.charAt(j)){
                     dp[i][j] = dp[i-1][j-1]+1;
