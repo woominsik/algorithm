@@ -5,29 +5,51 @@ package BaekJoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.*;
 
 
 public class Main{
-
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s1 = new StringBuilder(br.readLine()).insert(0,"0").toString();
-        String s2 = new StringBuilder(br.readLine()).insert(0,"0").toString();
 
-        int [][]dp = new int[s1.length()][s2.length()];
+        int [] temp = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
-        for(int i=1;i<s1.length();i++){ //
-            boolean check = false;
-            for(int j=1;j<s2.length();j++){
-                if(s1.charAt(i)==s2.charAt(j)){
-                    dp[i][j] = dp[i-1][j-1]+1;
-                }
-                else{
-                    dp[i][j]= Math.max(dp[i-1][j], dp[i][j-1]);
-                }
-            }
+        int N = temp[0];
+        int K = temp[1];
+
+        int [] nums = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        int answer = 0;
+        int count =0;
+        int start=0;
+        int end =0;
+
+        for(int i :nums){
+            map.put(i,0);
         }
-        System.out.println(dp[s1.length()-1][s2.length()-1]);
+
+        for(start = 0;start<N;start++){
+            while(end<N&&map.get(nums[end])<K){
+                map.put(nums[end],map.get(nums[end])+1);
+                count++;
+                end++;
+            }
+            if(end == N)
+                end = end-1;
+            if(map.get(nums[end])==K){
+                answer = answer<count ? count:answer;
+            }
+            map.put(nums[start],map.get(nums[start])-1);
+            count -=1;
+        }
+
+        System.out.println(answer);
     }
 }

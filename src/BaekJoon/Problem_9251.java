@@ -1,7 +1,11 @@
 package BaekJoon;
 
-//https://coder-in-war.tistory.com/entry/%EA%B0%9C%EB%85%90-49-LCSLongest-Common-Subsequence 참고
-// lcs 알고리즘
+/**
+ * https://coder-in-war.tistory.com/entry/%EA%B0%9C%EB%85%90-49-LCSLongest-Common-Subsequence 참고
+ * lcs 알고리즘
+ * s1과 s2의 각 문자를 가리키는 for문을 돌려 서로 같은 문자일 경우 dp[i-1][j-1]+1을 수행한다.
+ * 다를 경우 Math.max(dp[i-1][j]와 dp[i][j-1]을 수행하여 값을 저장한다.
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;

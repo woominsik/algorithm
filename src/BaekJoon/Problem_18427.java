@@ -23,7 +23,7 @@ public class Problem_18427 {
         }
 
 
-        for(int i=0; i<=N; i++)   //0일 가능성은 모두 1이기 때문에
+        for(int i=0; i<=N; i++)   // M과 H의 크기가 같을 경우, 경우의 수가 1이 증가한다.
             dp[i][0] = 1;
 
         for(int i=1; i<=N; i++) {
