@@ -1,18 +1,20 @@
 package BaekJoon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
-
-import java.io.*;
-import java.util.*;
-
-public class Main { // 16926 반시계 방향
+public class Problem_16926 {
     static Queue<Integer>[] alArr;
     static int N;
     static int M;
     static int R;
     static int [][] nums;
     static int [][] ans;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int [] temp = Arrays.stream(br.readLine().split(" "))
                 .mapToInt(Integer::parseInt)
