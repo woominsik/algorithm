@@ -1,17 +1,16 @@
 package BaekJoon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-
-import java.io.*;
-import java.nio.Buffer;
-import java.util.*;
-import java.util.stream.Collectors;
-
-public class Main {
+public class Problem_2606 {
     static ArrayList<Integer>[] alArr;
     static ArrayList<Integer> coms;
     static boolean [] visited;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
@@ -26,8 +25,8 @@ public class Main {
 
         for(int i=0;i<C;i++){
             int [] temp = Arrays.stream(br.readLine().split(" "))
-                                .mapToInt(Integer::parseInt)
-                                .toArray();
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
             alArr[temp[0]].add(temp[1]);
             alArr[temp[1]].add(temp[0]);
         }
