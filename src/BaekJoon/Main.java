@@ -3,49 +3,76 @@ package BaekJoon;
 
 
 import java.io.*;
-import java.nio.Buffer;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
-    static ArrayList<Integer>[] alArr;
-    static ArrayList<Integer> coms;
-    static boolean [] visited;
+
+    static int N;
+    static int M;
+    static int [][] board;
+    static int [] dx = {1,-1,0,0};
+    static int [] dy = {0,0,1,-1};
+    static int answer = Integer.MAX_VALUE;
+    static boolean [][] visited;
     public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
-        int C = Integer.parseInt(br.readLine());
+        int [] temp = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
-        alArr = new ArrayList[N+1];
-        coms = new ArrayList<>();
+        N = temp[0];
+        M = temp[1];
 
-        for(int i=1;i<=N;i++){
-            alArr[i]= new ArrayList<>();
+        board = new int[N][M];
+        visited = new boolean[N][M];
+
+        for(int i=0;i<N;i++){
+            board[i] = Stream.of(br.readLine().split("")).mapToInt(Integer::parseInt).toArray();
         }
 
-        for(int i=0;i<C;i++){
-            int [] temp = Arrays.stream(br.readLine().split(" "))
-                                .mapToInt(Integer::parseInt)
-                                .toArray();
-            alArr[temp[0]].add(temp[1]);
-            alArr[temp[1]].add(temp[0]);
+        dfs(0,0,1,0);
+        if(answer==Integer.MAX_VALUE){
+            System.out.println(-1);
         }
-        visited = new boolean[N+1];
+        else{
+            System.out.println(answer);
+        }
 
-        dfs(1);
-
-        System.out.println(coms.size());
     }
+    static void dfs(int x, int y, int k,int count){
+        visited[y][x] = true;
 
-    static void dfs(int node){
-        visited[node]=true;
-        for(int i=0;i< alArr[node].size();i++){
-            int num = alArr[node].get(i);
-            if(!visited[num]){
-                coms.add(num);
-                dfs(num);
+        count +=1;
+        if(x==M-1 && y==N-1){
+            if(count<answer)
+                answer = count;
+        }
+
+        if(k>0){
+            for(int i=0;i<4;i++){
+                int tx = x+dx[i];
+                int ty = y+dy[i];
+                if(tx>=0 && tx<M && ty>=0 && ty<N){
+                    if(board[ty][tx]==1 && !visited[ty][tx]){
+                        dfs(tx,ty,k-1,count);
+                        visited[ty][tx] = false;
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<4;i++){
+            int tx = x+dx[i];
+            int ty = y+dy[i];
+            if(tx>=0 && tx<M && ty>=0 && ty<N){
+                if(board[ty][tx]==0 && !visited[ty][tx]){
+                    dfs(tx,ty,k,count);
+                    visited[ty][tx] = false;
+                }
             }
         }
     }
 }
+
