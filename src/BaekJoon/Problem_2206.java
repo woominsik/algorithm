@@ -1,11 +1,14 @@
 package BaekJoon;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.stream.Stream;
 
-public class Main {
-
+public class Problem_2206 {
     static int N;
     static int M;
     static int [][] board;
@@ -13,7 +16,7 @@ public class Main {
     static int [] dy = {0,0,1,-1};
     static int answer = Integer.MAX_VALUE;
     static boolean [][][] visited;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
         int [] temp = Arrays.stream(br.readLine().split(" "))
@@ -41,12 +44,12 @@ public class Main {
 
     }
     static int bfs(int x,int y){
-        Queue<Node> q = new LinkedList<>();
+        Queue<Main.Node> q = new LinkedList<>();
 
-        q.add(new Node(0,0,0,0));
+        q.add(new Main.Node(0,0,0,0));
 
         while (!q.isEmpty()){
-            Node n = q.poll();
+            Main.Node n = q.poll();
 
 
 
@@ -62,17 +65,17 @@ public class Main {
                     if(n.count==0){
                         if(board[ny][nx]==0){
                             visited[ny][nx][n.count] = true;
-                            q.add(new Node(nx,ny,n.move+1, n.count));
+                            q.add(new Main.Node(nx,ny,n.move+1, n.count));
                         }
                         else{
                             visited[ny][nx][n.count+1] = true;
-                            q.add(new Node(nx,ny,n.move+1, n.count+1));
+                            q.add(new Main.Node(nx,ny,n.move+1, n.count+1));
                         }
                     }
                     else{
                         if(board[ny][nx]==0){
                             visited[ny][nx][n.count] = true;
-                            q.add(new Node(nx,ny,n.move+1, n.count));
+                            q.add(new Main.Node(nx,ny,n.move+1, n.count));
                         }
                     }
                 }
@@ -97,4 +100,3 @@ public class Main {
         }
     }
 }
-
