@@ -1,14 +1,16 @@
 package BaekJoon;
 
-import java.io.*;
-import java.util.*;
-import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Main {
+public class Problem_2961 {
     static ArrayList<int []> ingredient;
     static int answer;
     static int N;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
@@ -41,4 +43,3 @@ public class Main {
         comb(cnt+1,bitter,sour,check);
     }
 }
-

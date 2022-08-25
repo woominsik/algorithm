@@ -44,12 +44,12 @@ public class Problem_2206 {
 
     }
     static int bfs(int x,int y){
-        Queue<Main.Node> q = new LinkedList<>();
+        Queue<Node> q = new LinkedList<>();
 
-        q.add(new Main.Node(0,0,0,0));
+        q.add(new Node(0,0,0,0));
 
         while (!q.isEmpty()){
-            Main.Node n = q.poll();
+            Node n = q.poll();
 
 
 
@@ -65,17 +65,17 @@ public class Problem_2206 {
                     if(n.count==0){
                         if(board[ny][nx]==0){
                             visited[ny][nx][n.count] = true;
-                            q.add(new Main.Node(nx,ny,n.move+1, n.count));
+                            q.add(new Node(nx,ny,n.move+1, n.count));
                         }
                         else{
                             visited[ny][nx][n.count+1] = true;
-                            q.add(new Main.Node(nx,ny,n.move+1, n.count+1));
+                            q.add(new Node(nx,ny,n.move+1, n.count+1));
                         }
                     }
                     else{
                         if(board[ny][nx]==0){
                             visited[ny][nx][n.count] = true;
-                            q.add(new Main.Node(nx,ny,n.move+1, n.count));
+                            q.add(new Node(nx,ny,n.move+1, n.count));
                         }
                     }
                 }
