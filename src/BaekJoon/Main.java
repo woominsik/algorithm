@@ -5,40 +5,70 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Main {
-    static ArrayList<int []> ingredient;
-    static int answer;
+
+    static int [][] board;
     static int N;
+    static ArrayList<int[]> chics;
+    static ArrayList<int[]> homes;
+    static int M;
+    static ArrayList<int[]> result;
+    static int answer=Integer.MAX_VALUE;
+
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        N = Integer.parseInt(br.readLine());
+        int [] temp = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
-        ingredient = new ArrayList<>();
-
-        answer = Integer.MAX_VALUE;
+        N = temp[0];
+        M = temp[1];
+        result = new ArrayList<>();
+        board = new int [N][N];
+        chics = new ArrayList<>();
+        homes = new ArrayList<>();
         for(int i=0;i<N;i++){
-            int [] temp = Arrays.stream(br.readLine().split(" "))
+            board[i] = Arrays.stream(br.readLine().split(" "))
                     .mapToInt(Integer::parseInt)
                     .toArray();
-            ingredient.add(temp);
         }
 
-        comb(0,0,1,0);
-        System.out.println(answer);
-    }
-    static void comb(int cnt, int bitter, int sour, int check){
-
-        if(cnt==N){
-            if(check==0){
-                return;
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                if(board[i][j]==1){
+                    homes.add(new int[] {i,j});
+                } else if (board[i][j]==2) {
+                    chics.add(new int []{i,j});
+                }
             }
-            answer = Math.min(answer,Math.abs(bitter-sour));
+        }
+        comb(0);
+
+        System.out.println(answer);
+
+    }
+    static void comb(int idx){
+        if(result.size() == M){
+            compute();
             return;
         }
 
-        int [] temp = ingredient.get(cnt);
-        comb(cnt+1,bitter+temp[1], sour*temp[0],check+1);
-        comb(cnt+1,bitter,sour,check);
+        for(int i=idx;i< chics.size();i++){
+            result.add(chics.get(i));
+            comb(i+1);
+            result.remove(chics.get(i));
+        }
+    }
+    static void compute(){
+        int chicDist =0;
+        for(int [] t : homes){
+            int tmp = Integer.MAX_VALUE;
+            for(int[] res : result){
+                tmp = Math.min(Math.abs(t[0]-res[0])+Math.abs(t[1]-res[1]),tmp);
+            }
+            chicDist+=tmp;
+        }
+        answer = Math.min(chicDist,answer);
     }
 }
 
