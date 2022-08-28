@@ -1,17 +1,18 @@
 package BaekJoon;
 
-import java.io.*;
-import java.util.*;
-import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
-public class Main {
+public class Problem_21278 {
     static int[][] board;
     static int N;
     static int M;
     static int [] ans;
     static int [] arr;
     static int answer =Integer.MAX_VALUE;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int [] temp = Arrays.stream(br.readLine().split(" "))
@@ -81,4 +82,3 @@ public class Main {
         }
     }
 }
-
