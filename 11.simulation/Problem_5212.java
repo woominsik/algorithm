@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main {
-
+public class Problem_5212 {
     static int[] dx = {1,-1,0,0};
     static int [] dy = {0,0,1,-1};
     static int H;
@@ -16,8 +15,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int [] temp = Arrays.stream(br.readLine().split(" "))
-                            .mapToInt(Integer::parseInt)
-                            .toArray();
+                .mapToInt(Integer::parseInt)
+                .toArray();
         W = temp[1];
         H = temp[0];
 
