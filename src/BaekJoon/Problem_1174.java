@@ -1,12 +1,10 @@
 package BaekJoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
-public class Main {
+public class Problem_1174 {
     static int[] nums= {9,8,7,6,5,4,3,2,1,0};
     static ArrayList<Long> arr=new ArrayList<>();
     static int n;
