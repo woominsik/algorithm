@@ -1,10 +1,15 @@
 package BaekJoon;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class Main {
-    public static void main(String[] args) throws IOException{ // 좌표 압축을 진행하지 않았을 경우, 메모리 초과 발생
+public class Problem_20440 {
+    public static void main(String[] args) throws IOException { // 좌표 압축을 진행하지 않았을 경우, 메모리 초과 발생
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
