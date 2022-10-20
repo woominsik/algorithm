@@ -27,12 +27,12 @@ public class Problem_20440 {
             sarr[count] = temp[0];
             earr[count] = temp[1];
             count++;
-
-            arr[count2][0] = temp[0]; arr[count2][1]++; count2++;
-            arr[count2][0] = temp[1]; arr[count2][1]--; count2++;
+                                                           // 2 16 입력시
+            arr[count2][0] = temp[0]; arr[count2][1]++; count2++; //[0]에는 2 [1]에는 1
+            arr[count2][0] = temp[1]; arr[count2][1]--; count2++; //[0]에는 16 [1]에는 -1
         }
 
-        Arrays.sort(arr, new Comparator<int[]>() {
+        Arrays.sort(arr, new Comparator<int[]>() { // [0]로 정렬
             @Override
             public int compare(int[] o1, int[] o2) {
                 if(o1[0]!=o2[0]){
@@ -45,18 +45,18 @@ public class Problem_20440 {
             }
         });
 
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) { // [1]로 누적합 시행
             arr[i][1] += arr[i-1][1];
         }
 
 
-        for (int[] ints : arr) {
+        for (int[] ints : arr) { // 누적합 진행한 거에 arr[n][0],arr[n][1]의 map 만들기
             map.put(ints[0],ints[1]);
 //            System.out.println(ints[1]+" "+ints[0]);
         }
 
-        int [] check = new int[map.size()]; //idx 저장
-        int [] tArr = new int[map.size()]; // 값 저장
+        int [] check = new int[map.size()]; //idx(arr[n][0]) 저장
+        int [] tArr = new int[map.size()]; // 값(arr[n][1]) 저장
 
         int cnt = 0;
         for(Map.Entry<Integer, Integer> m : map.entrySet()){
@@ -76,8 +76,8 @@ public class Problem_20440 {
         for(int i=0;i<tArr.length;i++){
 
             if(tArr[i]>maxNum){
-                start = i;
-                maxNum=tArr[i];
+                start = i;  // 클 경우 시작값을 i로 지정
+                maxNum=tArr[i]; // 최댓값 최신화
                 count=0;
                 c=true;
             }
