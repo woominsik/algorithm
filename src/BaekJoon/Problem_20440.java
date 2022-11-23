@@ -9,7 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Problem_20440 {
-    public static void main(String[] args) throws IOException { // 좌표 압축을 진행하지 않았을 경우, 메모리 초과 발생
+    public static void main(String[] args) throws IOException {
+        // 좌표 압축을 진행하지 않았을 경우, 배열의 크기가 21억으로 메모리 초과 발생
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
@@ -20,6 +21,9 @@ public class Problem_20440 {
         Map<Integer, Integer> map = new LinkedHashMap<>();
         int count = 0;
         int count2 =0;
+
+        // 1 1 0 0 -1 -1 => for 문을 통해 누적합을 실행하면
+        // 1 2 2 2 1 0  => 이렇게 정리됨
         for(int i=0;i<N;i++){
             int [] temp = Arrays.stream(br.readLine().split(" "))
                     .mapToInt(Integer::parseInt)
@@ -55,6 +59,7 @@ public class Problem_20440 {
 //            System.out.println(ints[1]+" "+ints[0]);
         }
 
+        // 좌표 압축 진행행
         int [] check = new int[map.size()]; //idx(arr[n][0]) 저장
         int [] tArr = new int[map.size()]; // 값(arr[n][1]) 저장
 
@@ -92,7 +97,7 @@ public class Problem_20440 {
                 count = 0;
             }
         }
-
+        // 2 4 6 10 16 start : 1, count: 2
         System.out.println(maxNum);
         System.out.println(check[start]+" "+check[start+len]);
     }
